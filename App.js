@@ -6,5 +6,6 @@ app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
 
+app.use(require("/"));
 app.use(require("./routes/login"));
-app.use(require("./routes/createUser"))
+app.use(require("./routes/createUser"));
