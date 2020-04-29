@@ -10,9 +10,11 @@ router.post("/upload", (req, res) => {
   let user = req.body.userId;
   let url = req.body.videoUrl;
 
+  res.send("Hello, plz work");
+
   db.videos.build({
-    user: userId,
-    url: videoUrl,
+    userId: user,
+    videoUrl: url,
   });
 });
 
