@@ -7,4 +7,5 @@ app.listen(PORT, () => {
 });
 
 app.use(require("./routes/login"));
-app.use(require("./routes/createUser"))
+app.use(require("./routes/createUser"));
+app.use(require("./routes/contentFeed"));
