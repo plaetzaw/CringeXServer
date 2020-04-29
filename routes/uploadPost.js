@@ -7,15 +7,18 @@ let db = require("../models");
 router.use(bodyParser.urlencoded({ extended: false }));
 
 router.post("/upload", (req, res) => {
-  let user = req.body.userId;
+  let user = parseInt(req.body.userId);
   let url = req.body.videoUrl;
+  console.log(user);
+  console.log(url);
+  console.log(typeof(user))
+  console.log(typeof(url))
 
-  res.send("Hello, plz work");
-
-  db.videos.build({
+  let post = db.videos.build({
     userId: user,
     videoUrl: url,
-  });
+  })
+  post.save().catch((err)=>{console.error(err)})
 });
 
 module.exports = router;
