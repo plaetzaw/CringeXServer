@@ -4,13 +4,15 @@ const router = express.Router();
 let db = require("../models");
 
 router.get("/feed", (req, res) => {
-  db.videos.findAll()
+  db.videos.findAll({
+    include: [{
+      model: db.user,
+      required: true
+     }]
+  })
   .then(videos=>{
     res.json(videos)
   })
-
-  // res.send();
 });
-// "Shut up Jaye"
 
 module.exports=router

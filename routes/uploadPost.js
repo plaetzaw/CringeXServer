@@ -18,7 +18,11 @@ router.post("/upload", (req, res) => {
     userId: user,
     videoUrl: url,
   })
-  post.save().catch((err)=>{console.error(err)})
+  post.save()
+  .then(()=>{
+    res.sendStatus(200)
+  })
+  .catch((err)=>{console.error(err)})
 });
 
 module.exports = router;
