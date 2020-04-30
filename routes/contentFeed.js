@@ -4,9 +4,9 @@ const router = express.Router();
 let db = require("../models");
 
 router.get("/feed", (req, res) => {
-  db.user.findAll()
-  .then(users=>{
-    res.send(users)
+  db.videos.findAll()
+  .then(videos=>{
+    res.json(videos)
   })
 
   // res.send();
