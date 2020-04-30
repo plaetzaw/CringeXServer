@@ -12,6 +12,7 @@ app.use(require("./routes/login"));
 app.use(require("./routes/createUser"));
 app.use(require("./routes/uploadPost"));
 app.use(require("./routes/contentFeed"));
+app.use(require("./routes/profileView"))
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
