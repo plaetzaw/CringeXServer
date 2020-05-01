@@ -43,9 +43,7 @@ router.post("/register", (req, res) => {
                 });
                 user
                   .save()
-                  .then(() =>
-                    res.status(200).json({ message: "USER REGISTERED" })
-                  )
+                  .then(() => res.status(200))
                   .catch((err) => console.error(err));
               });
             }
