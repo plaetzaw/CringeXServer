@@ -11,6 +11,18 @@ const PORT = process.env.PORT || 8081;
 // need to initialize and use body parser
 const bodyParser = require("body-parser");
 
+const router = require('/router');
+
+app.use(router);
+
+io.on('connection', (socket) => {
+  console.log("We have a new connection ... ")
+
+  socket.on('disconnect', () => {
+    console.log('User has left ...')
+  })
+})
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
