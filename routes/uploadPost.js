@@ -19,7 +19,7 @@ router.post("/upload", auth, (req, res) => {
   console.log(typeof url);
   console.log(req.body.videoUrl);
 
-  console.log("Trying to find content type");
+  console.log("Trying to find content type in this world that we live in");
   console.log(req.body);
   console.log(req.body.postType);
 
