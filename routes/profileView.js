@@ -23,8 +23,20 @@ router.get("/profile", (req, res) => {
     }]
   })
   .then(posts=>{
-    console.log(posts)
-    res.json(posts)
+    
+    let obj = {
+      caption: posts.obj,
+      contentType: posts.contentType,
+      id: posts.id,
+      user: {
+        email: posts.user.email,
+        handle: posts.user.handle,
+        id: posts.user.id
+      },
+      videoUrl: posts.videoUrl
+    }
+
+    res.json(obj)
   })
 })
 

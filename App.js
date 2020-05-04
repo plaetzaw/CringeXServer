@@ -1,8 +1,7 @@
 require('dotenv').config()
-const express = require('express');
-
+const express = require("express");
 const app = express();
-
+const PORT = process.env.PORT || 8080;
 
 // need to initialize and use body parser
 const bodyParser = require("body-parser");
@@ -16,6 +15,7 @@ app.use(require("./routes/uploadPost"));
 app.use(require("./routes/contentFeed"));
 app.use(require("./routes/profileView"))
 app.use(require("./routes/protected"))
-// app.use(require("./routes/chat"))
 
-server.listen(process.env.PORT || 5000, () => console.log(`Server has started.`));
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});
