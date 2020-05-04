@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const jwtAuth = require("../functions/jwtAuth");
 let db = require("../models");
 
 router.post("/profile", (req, res) => {
@@ -10,22 +10,24 @@ router.post("/profile", (req, res) => {
 });
 
 router.get("/profile", (req, res) => {
-  db.user.findOne({
-    where: {
-      id : 1
-    },
-    include: [{
-      model: db.videos,
-      required: true
-    },
-    {
-      model: db.profileData
-    }]
-  })
-  .then(videos=>{
-    res.json(videos)
-  })
-})
-
+  db.user
+    .findOne({
+      where: {
+        id: 1,
+      },
+      include: [
+        {
+          model: db.videos,
+          required: true,
+        },
+        {
+          model: db.profileData,
+        },
+      ],
+    })
+    .then((videos) => {
+      res.json(videos);
+    });
+});
 
 module.exports = router;
