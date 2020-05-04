@@ -22,8 +22,9 @@ router.get("/profile", (req, res) => {
       model: db.profileData
     }]
   })
-  .then(videos=>{
-    res.json(videos)
+  .then(posts=>{
+    console.log(posts)
+    res.json(posts)
   })
 })
 
