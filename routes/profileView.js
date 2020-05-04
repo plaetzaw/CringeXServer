@@ -22,8 +22,21 @@ router.get("/profile", (req, res) => {
       model: db.profileData
     }]
   })
-  .then(videos=>{
-    res.json(videos)
+  .then(posts=>{
+    
+    let obj = {
+      caption: posts.obj,
+      contentType: posts.contentType,
+      id: posts.id,
+      user: {
+        email: posts.user.email,
+        handle: posts.user.handle,
+        id: posts.user.id
+      },
+      videoUrl: posts.videoUrl
+    }
+
+    res.json(obj)
   })
 })
 
