@@ -10,25 +10,22 @@ router.post("/profile", (req, res) => {
 });
 
 router.get("/profile", (req, res) => {
-  db.user
-    .findOne({
-      where: {
-        id: 1,
-      },
-      include: [
-        {
-          model: db.videos,
-          required: true,
-        },
-        {
-          model: db.profileData,
-        },
-      ],
-    })
-    .then((videos) => {
-      res.json(videos);
-    });
-});
-
+  db.user.findOne({
+    where: {
+      id : 1
+    },
+    attributes: ['id', 'handle', 'email'],
+    include: [{
+      model: db.videos,
+      required: true
+    },
+    {
+      model: db.profileData
+    }]
+  })
+  .then(posts=>{
+    res.json(posts)
+  })
+})
 
 module.exports = router;

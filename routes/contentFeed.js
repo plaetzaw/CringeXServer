@@ -5,18 +5,19 @@ const jwtAuth = require("../functions/jwtAuth");
 let db = require("../models");
 
 router.get("/feed", jwtAuth, (req, res) => {
-  db.videos
-    .findAll({
-      include: [
-        {
-          model: db.user,
-          required: true,
-        },
-      ],
-    })
-    .then((videos) => {
-      res.json(videos);
-    });
+  db.videos.findAll({
+    include: [{
+      model: db.user,
+      required: true,
+      attributes: [
+        'email',
+        'handle'
+    ]
+     }]
+  })
+  .then(videos=>{
+    res.json(videos)
+  })
 });
 
 module.exports = router;
