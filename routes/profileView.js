@@ -14,6 +14,7 @@ router.get("/profile", (req, res) => {
     where: {
       id : 1
     },
+    attributes: ['id', 'handle', 'email'],
     include: [{
       model: db.videos,
       required: true
@@ -23,20 +24,7 @@ router.get("/profile", (req, res) => {
     }]
   })
   .then(posts=>{
-    
-    let obj = {
-      caption: posts.obj,
-      contentType: posts.contentType,
-      id: posts.id,
-      user: {
-        email: posts.user.email,
-        handle: posts.user.handle,
-        id: posts.user.id
-      },
-      videoUrl: posts.videoUrl
-    }
-
-    res.json(obj)
+    res.json(posts)
   })
 })
 

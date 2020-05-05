@@ -7,7 +7,11 @@ router.get("/feed", (req, res) => {
   db.videos.findAll({
     include: [{
       model: db.user,
-      required: true
+      required: true,
+      attributes: [
+        'email',
+        'handle'
+    ]
      }]
   })
   .then(videos=>{
