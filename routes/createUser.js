@@ -21,6 +21,7 @@ router.post("/register", (req, res) => {
       if (user) {
         console.log("email already exists"); // MUST INCLUDE A RESPONSE FOR THE SERVER TO REPLY TO THE CLIENT WITH
         // make sure you return a res from the server to kill this process. Console logging does not kill the process
+        res.status(500).json({ message: "Email already exists" });
       } else {
         db.user
           .findOne({
@@ -32,6 +33,7 @@ router.post("/register", (req, res) => {
             console.log("looking for handle...");
             if (user2) {
               console.log("handle already exists");
+              res.status(500).json({ message: "Handle already exists" });
               // make sure you return a res from the server to kill this process. Console logging does not kill the process
             } else {
               bcrypt.hash(password, SALT).then((hash) => {
@@ -41,9 +43,12 @@ router.post("/register", (req, res) => {
                   handle: handle,
                   password: hash,
                 });
+
                 user
                   .save()
-                  .then(() => res.status(200))
+                  .then(() =>
+                    res.status(200).json({ message: "New user created!" })
+                  )
                   .catch((err) => console.error(err));
               });
             }

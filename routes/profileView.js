@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const jwtAuth = require("../functions/jwtAuth");
 let db = require("../models");
 
 router.post("/profile", (req, res) => {
@@ -27,6 +27,5 @@ router.get("/profile", (req, res) => {
     res.json(posts)
   })
 })
-
 
 module.exports = router;

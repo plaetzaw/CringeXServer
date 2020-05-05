@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const jwtAuth = require("../functions/jwtAuth");
 
 let db = require("../models");
 
-router.get("/feed", (req, res) => {
+router.get("/feed", jwtAuth, (req, res) => {
   db.videos.findAll({
     include: [{
       model: db.user,
@@ -19,4 +20,4 @@ router.get("/feed", (req, res) => {
   })
 });
 
-module.exports=router
+module.exports = router;
