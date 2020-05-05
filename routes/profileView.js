@@ -12,7 +12,7 @@ router.post("/profile", (req, res) => {
 router.get("/profile", (req, res) => {
   db.user.findOne({
     where: {
-      id : 1
+      id : req.user.id
     },
     attributes: ['id', 'handle', 'email'],
     include: [{
