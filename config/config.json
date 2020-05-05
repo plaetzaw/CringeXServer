@@ -5,5 +5,12 @@
     "database": "hrwmfrqh",
     "host": "drona.db.elephantsql.com",
     "dialect": "postgres"
+  },
+  "production": {
+    "username": "hrwmfrqh",
+    "password": "xjjoAg1uBUgNFmgMuegHhNWGBCQvIdPH",
+    "database": "hrwmfrqh",
+    "host": "drona.db.elephantsql.com",
+    "dialect": "postgres"
   }
 }
